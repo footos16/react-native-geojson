@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, Fragment } from 'react';
 import { View } from 'react-native';
-import MapView from 'react-native-maps';
+import { MapView } from 'expo';
 import uuid from 'uuid';
 
 export const makeOverlays = features => {
@@ -77,7 +77,7 @@ const makeCoordinates = feature => {
 const Geojson = props => {
   const overlays = makeOverlays(props.geojson.features);
   return (
-    <View>
+    <Fragment>
       {overlays.map(overlay => {
         if (overlay.type === 'point') {
           return (
@@ -111,7 +111,7 @@ const Geojson = props => {
           );
         }
       })}
-    </View>
+    </Fragment>
   );
 };
 
